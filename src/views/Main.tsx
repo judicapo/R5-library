@@ -47,28 +47,44 @@ const Home = (): JSX.Element => {
         <Flex mx={-2}>
           <Box width={1 / 6} px={2}>
           </Box>
-          <Box width={1 / 2} px={2}>
-            <Flex mx={-2}>
-              <Box width={1 / 4} px={2}>
-              </Box>
-              <Box width={1} px={2}>
-                {queriedBooks.length > 0 && queriedBooks.map((book: Book) =>
-                  <Flex key={book.volumeInfo.previewLink}>
-                    <Card width={[256, 320]} mx='auto'>
-                      <Image src={book.volumeInfo.imageLinks
-                        && book.volumeInfo.imageLinks.smallThumbnail} />
-                      <Text>
-                        {book.volumeInfo.title}
-                      </Text>
-                    </Card>
-                  </Flex>,
-                )}
-              </Box>
-              <Box width={1 / 6} px={2}>
-              </Box>
+          <Box width={1} px={2}>
+            <Flex mx={-2} flexWrap='wrap'>
+              {queriedBooks.length > 0 && queriedBooks.map((book: Book) =>
+                <Box px={2} width={1 / 2} >
+                  <Card height={200} p={1}>
+                    <Flex key={book.volumeInfo.previewLink}
+                      justifyContent='space-arrownd' alignItems='center'
+                      alignContent='center' alignSelf='center'
+                      height='100%'>
+                      <Image mx={10} src={book.volumeInfo.imageLinks
+                        && book.volumeInfo.imageLinks.smallThumbnail}
+                        sx={{
+                          display: 'block',
+                          maxWidth: '100%',
+                          height: '100%',
+                        }}
+                      />
+                      <Flex flexDirection='column'>
+                        <Text py={0.5} color='gray' fontWeight={600}>
+                          {book.volumeInfo.averageRating || 'Not rated'}
+                        </Text>
+                        <Text py={0.5}>
+                          {book.volumeInfo.title}
+                        </Text>
+                        {book.volumeInfo.authors && book.volumeInfo.authors.map(a =>
+                          <Text key={`${book.volumeInfo.authors.length}-${a}`} py={0.5}
+                            color='gray' fontWeight={600}>
+                            {a}
+                          </Text>,
+                        )}
+                      </Flex>
+                    </Flex>
+                  </Card>
+                </Box>,
+              )}
             </Flex>
           </Box>
-          <Box width={1 / 4} px={2}>
+          <Box width={1 / 6} px={2}>
           </Box>
         </Flex>
       }
