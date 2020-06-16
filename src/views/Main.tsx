@@ -6,11 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { GlobalState } from '@store/index';
 import { LoadingComponent } from '@components/loading/Loading';
 import { BOOK_ACTIONS, Book } from '@store/redux/book/types';
+import { useHistory } from 'react-router-dom';
 
 const Home = (): JSX.Element => {
   const MAX_RESULTS: number = 6;
 
   const dispatch = useDispatch();
+  const history = useHistory();
   const { queriedBooks } = useSelector((state: GlobalState) => state.bookReducer);
   const { appLoading } = useSelector((state: GlobalState) => state.appReducer);
 
@@ -50,7 +52,9 @@ const Home = (): JSX.Element => {
           <Box width={1} px={2}>
             <Flex mx={-2} flexWrap='wrap'>
               {queriedBooks.length > 0 && queriedBooks.map((book: Book) =>
-                <Box px={2} width={1 / 2} >
+                <Box px={2} width={1 / 2} onClick={() => history.push(`/book`, {
+                  id: book.volumeInfo.previewLink,
+                })}>
                   <Card height={200} p={1}>
                     <Flex key={book.volumeInfo.previewLink}
                       justifyContent='space-arrownd' alignItems='center'
