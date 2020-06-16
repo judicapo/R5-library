@@ -24,6 +24,7 @@ module.exports = {
       '@views': path.resolve(__dirname, './src/views/'),
       '@middleware': path.resolve(__dirname, './src/middleware/'),
       '@providers': path.resolve(__dirname, './src/providers/'),
+      '@store': path.resolve(__dirname, './src/store/'),
     },
   },
   module: {

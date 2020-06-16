@@ -1,0 +1,8 @@
+import { all, call } from 'redux-saga/effects';
+import bookSaga from './bookSaga';
+
+export default function* rootSaga() {
+  yield all([
+    call(bookSaga),
+  ]);
+}

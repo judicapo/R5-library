@@ -50,6 +50,9 @@
 			"@providers/*": [
 				"src/providers/*"
 			],
+			"@store/*": [
+				"src/store/*"
+			],
 		},
 	},
 }

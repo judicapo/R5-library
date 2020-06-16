@@ -1,4 +1,4 @@
-interface FetchApiParams {
+export interface FetchApiParams {
   method: | 'POST' | 'GET' | 'PUT' | 'DELETE';
   path: string;
   token?: string;
