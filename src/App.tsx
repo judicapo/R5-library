@@ -19,8 +19,8 @@ const App = () => {
           <Route exact path='/' component={Main} />
           {!isLoading && isAuthenticated && (
             <>
-              <Route exact path='/profile' component={Profile} />
               <Route path='/book' component={Book} />
+              <Route exact path='/profile' component={Profile} />
             </>
           )}
         </Switch>

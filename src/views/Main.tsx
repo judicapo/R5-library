@@ -16,7 +16,7 @@ const Home = (): JSX.Element => {
   const { queriedBooks } = useSelector((state: GlobalState) => state.bookReducer);
   const { appLoading } = useSelector((state: GlobalState) => state.appReducer);
 
-  const getBooks = async (book: string): Promise<void> => {
+  const getBooks = (book: string): void => {
     dispatch({
       type: BOOK_ACTIONS.BOOK_GET_REQUEST, data: {
         method: 'GET',
@@ -53,10 +53,10 @@ const Home = (): JSX.Element => {
             <Flex mx={-2} flexWrap='wrap'>
               {queriedBooks.length > 0 && queriedBooks.map((book: Book) =>
                 <Box px={2} width={1 / 2} onClick={() => history.push(`/book`, {
-                  id: book.volumeInfo.previewLink,
+                  id: book.volumeInfo.infoLink,
                 })}>
                   <Card height={200} p={1}>
-                    <Flex key={book.volumeInfo.previewLink}
+                    <Flex key={book.volumeInfo.infoLink}
                       justifyContent='space-arrownd' alignItems='center'
                       alignContent='center' alignSelf='center'
                       height='100%'>

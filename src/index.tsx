@@ -12,12 +12,12 @@ import theme from '@rebass/preset';
 const store = configureStore();
 
 ReactDOM.render(
-  <Auth0Provider>
-    <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
+    <Auth0Provider>
       <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </Provider>
-    </ThemeProvider>
-  </Auth0Provider>, document.getElementById('root'));
+    </Auth0Provider>
+  </ThemeProvider>, document.getElementById('root'));

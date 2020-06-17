@@ -4,10 +4,12 @@ import rootReducer from './redux';
 import rootSaga from './sagas';
 import { AppState } from './redux/app/types';
 import { BookState } from './redux/book/types';
+import { ReviewState } from './redux/review/types';
 
 export interface GlobalState {
   appReducer: AppState;
   bookReducer: BookState;
+  reviewReducer: ReviewState;
 }
 
 export interface SagaStore extends Store {
